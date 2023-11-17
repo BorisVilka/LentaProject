@@ -7,6 +7,44 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:1023456551742:android:5996fa5a7c432d768b026f",
+        "android_client_info": {
+          "package_name": "com.completemodule"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDwJXkeIjbgfXxXHeIltgHJ3u_7rBe8ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1023456551742:android:8ddb6c9239aac0f48b026f",
+        "android_client_info": {
+          "package_name": "com.lenta.adminmodule"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDwJXkeIjbgfXxXHeIltgHJ3u_7rBe8ko"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:1023456551742:android:ad2d7f31871d706c8b026f",
         "android_client_info": {
           "package_name": "com.lentaproject"

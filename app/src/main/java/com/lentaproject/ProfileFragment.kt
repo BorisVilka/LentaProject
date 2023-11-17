@@ -21,6 +21,7 @@ class ProfileFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentProfileBinding.inflate(inflater,container,false)
         val user = FirebaseAuth.getInstance().currentUser
+        var string = user!!.email!!.replace("plus","+").removeSuffix("@gmail.com")
         if(user!!.displayName.isNullOrEmpty()) {
              binding.textView2.text = "Имя не указано"
             binding.textView3.text = "Адрес не указан"
@@ -29,10 +30,24 @@ class ProfileFragment : Fragment() {
             binding.textView2.text = arr[0]
             binding.textView3.text = arr[1]
         }
-        binding.textView4.text = "Номер телефона: ${user.phoneNumber}"
+        binding.textView4.text = "Номер телефона: ${string}"
         binding.button2.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             requireActivity().finish()
+        }
+        binding.edit.setOnClickListener {
+            val dialog = MyDialog {
+                var string = user!!.email!!.replace("plus","+").removeSuffix("@gmail.com")
+                if(user!!.displayName.isNullOrEmpty()) {
+                    binding.textView2.text = "Имя не указано"
+                    binding.textView3.text = "Адрес не указан"
+                } else {
+                    val arr = user.displayName!!.split("|")
+                    binding.textView2.text = arr[0]
+                    binding.textView3.text = arr[1]
+                }
+            }
+            dialog.show(requireActivity().supportFragmentManager,"TAG")
         }
         binding.button3.setOnClickListener {
             val navController = Navigation.findNavController(requireActivity(),R.id.fragmentContainerView)

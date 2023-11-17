@@ -39,11 +39,11 @@ android {
 dependencies {
     implementation 'ru.yoomoney.sdk.kassa.payments:yookassa-android-sdk:6.8.0'
     implementation 'com.squareup.picasso:picasso:2.8'
-    implementation("com.google.firebase:firebase-firestore-ktx:24.8.1")
-    implementation("com.google.firebase:firebase-storage-ktx:20.2.1")
-    implementation("com.google.firebase:firebase-appcheck-playintegrity:17.0.1")
-    implementation("com.google.firebase:firebase-appcheck-debug:17.0.1")
-    implementation("com.google.firebase:firebase-appcheck-ktx:17.0.1")
+    implementation("com.google.firebase:firebase-firestore-ktx:24.9.1")
+    implementation("com.google.firebase:firebase-storage-ktx:20.3.0")
+    implementation("com.google.firebase:firebase-appcheck-playintegrity:17.1.1")
+    implementation("com.google.firebase:firebase-appcheck-debug:17.1.1")
+    implementation("com.google.firebase:firebase-appcheck-ktx:17.1.1")
     implementation 'com.google.android.gms:play-services-auth:20.7.0'
     implementation 'com.facebook.android:facebook-login:16.2.0'
     implementation 'com.google.android.play:core:1.10.3'

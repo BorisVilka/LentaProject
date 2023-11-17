@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">На дом(сборщик)</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="status">
+        <item>В обработке</item>
+        <item>Принят в работу</item>
+        <item>В пути</item>
+        <item>Доставлен</item>
+    </string-array>
+</resources>

@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.firedata.OrderList
 import com.firedata.StoreList
 import com.google.firebase.auth.FirebaseAuth
@@ -23,14 +24,16 @@ class OrdersFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentOrdersBinding.inflate(inflater,container,false)
+        binding.list.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
         FirebaseFirestore.getInstance().collection("main").document("orders").get()
             .addOnCompleteListener {
                 if(it.isSuccessful) {
                     val res = it.result.toObject(OrderList::class.java)
                     binding.progressBar2.visibility = View.INVISIBLE
                     val user = FirebaseAuth.getInstance().currentUser
-                    if(res!=null && res.list!=null) {
-                        res.list = res!!.list!!.filter { it.phone == user!!.phoneNumber!!}.toMutableList()
+                    var string = user!!.email!!.replace("plus","+").removeSuffix("@gmail.com")
+                    if(res?.list != null) {
+                        res.list = res.list!!.filter { it.phone == string}.toMutableList()
                         adapter = OrderAdapter(res.list!!)
                         binding.list.adapter = adapter
                     } else {

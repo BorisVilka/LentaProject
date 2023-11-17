@@ -15,4 +15,8 @@
         android:name="com.lenta.adminmodule.AddFragment"
         android:label="fragment_add"
         tools:layout="@layout/fragment_add" />
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="com.lenta.adminmodule.EditFragment"
+        android:label="EditFragment" />
 </navigation>

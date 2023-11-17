@@ -18,4 +18,4 @@ rootProject.name = "LentaProject"
 include ':app'
 include ':firedata'
 include ':adminmodule'
-include ':app:completemodule'
+include ':completemodule'

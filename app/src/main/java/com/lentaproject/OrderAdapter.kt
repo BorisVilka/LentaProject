@@ -25,8 +25,11 @@ class OrderAdapter(val data: MutableList<Order>): RecyclerView.Adapter<OrderAdap
 
     override fun onBindViewHolder(holder: OrderHolder, position: Int) {
         var sb = "Товары:\n"
-        for(i in data[position].products!!) sb = sb+"${i.name} ${i.count} ${i.labelPrice}"
+        for(i in data[position].products!!) sb = sb+"${i.name} ${i.count} ${i.labelPrice}\n"
         holder.binding.textView6.text = sb
         holder.binding.textView10.text = data[position].status
+        var sum = 0.0
+        for(i in data[position].products!!) sum+=i.price!!*i.count!!
+        holder.binding.textView12.text = "${sum} руб."
     }
 }

@@ -13,7 +13,7 @@ class LauncherActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        if(FirebaseAuth.getInstance().currentUser!=null) {
+       /* if(FirebaseAuth.getInstance().currentUser!=null) {
             startActivity(Intent(applicationContext,MainActivity::class.java))
             finish()
         } else {
@@ -30,7 +30,7 @@ class LauncherActivity : AppCompatActivity() {
                 .setAvailableProviders(providers)
                 .build()
             signInLauncher.launch(signInIntent)
-        }
+        }*/
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launcher)
     }

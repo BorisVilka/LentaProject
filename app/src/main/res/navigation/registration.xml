@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/registration"
+    app:startDestination="@id/loaderFragment">
+
+    <fragment
+        android:id="@+id/loaderFragment"
+        android:name="com.lentaproject.LoaderFragment"
+        android:label="LoaderFragment" />
+    <fragment
+        android:id="@+id/selectFragment"
+        android:name="com.lentaproject.SelectFragment"
+        android:label="fragment_select"
+        tools:layout="@layout/fragment_select" />
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="com.lentaproject.RegistrationFragment"
+        android:label="RegistrationFragment" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.lentaproject.LoginFragment"
+        android:label="LoginFragment" />
+</navigation>

@@ -9,8 +9,13 @@ import com.lentaproject.databinding.ListItemBinding
 import com.squareup.picasso.Picasso
 import kotlin.math.max
 
-class ListAdapter(val data: List<StoreObject>): RecyclerView.Adapter<ListAdapter.Companion.MyHolder>() {
+class ListAdapter(val all: List<StoreObject>): RecyclerView.Adapter<ListAdapter.Companion.MyHolder>() {
 
+    var data = mutableListOf<StoreObject>()
+
+    init {
+        data.addAll(all)
+    }
     companion object {
         class MyHolder(val binding: ListItemBinding): ViewHolder(binding.root) {
             var count = 0
@@ -25,6 +30,18 @@ class ListAdapter(val data: List<StoreObject>): RecyclerView.Adapter<ListAdapter
         return data.size
     }
 
+
+    public fun setFilter(filter: String) {
+        data.clear()
+        data.addAll(all.filter { it.name!!.contains(filter) })
+        notifyDataSetChanged()
+    }
+
+    public fun closeSearch() {
+        data.clear()
+        data.addAll(all)
+        notifyDataSetChanged()
+    }
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
         holder.binding.imageView5.setImageResource(if(MyApp.list.contains(data[position])) R.drawable.baseline_check_24 else R.drawable.outline_shopping_cart_checkout_24)
         holder.binding.imageView5.setOnClickListener {
@@ -36,16 +53,16 @@ class ListAdapter(val data: List<StoreObject>): RecyclerView.Adapter<ListAdapter
                 holder.binding.imageView5.setImageResource(R.drawable.outline_shopping_cart_checkout_24)
             }
         }
-        holder.count = 1
-        holder.binding.textView7.text = holder.count.toString()
+        data[position].count = 1
+        holder.binding.textView7.text = data[position].count.toString()
         holder.binding.imageView4.setOnClickListener {
-            holder.count++
-            holder.binding.textView7.text = holder.count.toString()
+            data[position].count = data[position].count!! + 1
+            holder.binding.textView7.text = data[position].count.toString()
         }
         holder.binding.imageView3.setOnClickListener {
-            holder.count--
+            data[position].count = data[position].count!! - 1
             holder.count = max(1,holder.count)
-            holder.binding.textView7.text = holder.count.toString()
+            holder.binding.textView7.text = data[position].count.toString()
         }
         Picasso.get().load(data[position].photoUrl).into(holder.binding.imageView2)
         holder.binding.textView5.text = data[position].name

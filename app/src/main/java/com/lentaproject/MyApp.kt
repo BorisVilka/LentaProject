@@ -30,6 +30,8 @@ class MyApp: Application() {
 
 
     companion object {
+        var first = true
         var list = mutableListOf<StoreObject>()
+        var all = mutableListOf<StoreObject>()
     }
 }

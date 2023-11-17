@@ -40,10 +40,12 @@ class BasketFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentBasketBinding.inflate(inflater,container,false)
         binding.list.adapter = BasketAdapter(MyApp.list)
+        binding.button4.visibility = if(MyApp.list.isNotEmpty()) View.VISIBLE else View.INVISIBLE
         binding.button4.setOnClickListener {
             //onTokenizeButtonCLick()
             val user = FirebaseAuth.getInstance().currentUser
-            if(!user!!.displayName!!.isNullOrEmpty()) onTokenizeButtonCLick()
+            var arr = user!!.displayName!!.trim().split("|")
+            if(!(user!!.displayName!!.isNullOrEmpty() || arr[0].isNullOrEmpty() || arr[1].isNullOrEmpty())) onTokenizeButtonCLick()
             else {
                 val dialog = MyDialog() {
                    onTokenizeButtonCLick()
@@ -72,7 +74,7 @@ class BasketFragment : Fragment() {
             paymentMethodTypes = paymentMethodTypes,
             gatewayId = "",
             customReturnUrl = "https://ya.ru",
-            userPhoneNumber = "${FirebaseAuth.getInstance().currentUser!!.phoneNumber}",
+            userPhoneNumber = FirebaseAuth.getInstance().currentUser!!.email!!.replace("plus","+").removeSuffix("@gmail.com"),
             googlePayParameters = GooglePayParameters(),
             authCenterClientId = UUID.randomUUID().toString()
         )
@@ -93,7 +95,7 @@ class BasketFragment : Fragment() {
                     val result = data?.let { createTokenizationResult(it) }
 
                     val order = Order().apply {
-                        phone = user!!.phoneNumber
+                        phone = FirebaseAuth.getInstance().currentUser!!.email!!.replace("plus","+").removeSuffix("@gmail.com")
                         products = MyApp.list.toMutableList()
                     }
                     MyApp.list.clear()

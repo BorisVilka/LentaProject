@@ -30,9 +30,8 @@ class BasketAdapter(val data: List<StoreObject>): RecyclerView.Adapter<BasketAda
             MyApp.list.remove(data[position])
             notifyDataSetChanged()
         }
-        holder.count = 1
+        holder.binding.textView7.text = data[position].count.toString()
         holder.binding.textView9.text = "${data[position].count} * ${data[position].price} = ${data[position].count!! * data[position].price!!}"
-        holder.binding.textView7.text = holder.count.toString()
         holder.binding.imageView4.setOnClickListener {
             data[position].count = data[position].count?.plus(1)
             holder.binding.textView7.text = data[position].count.toString()
